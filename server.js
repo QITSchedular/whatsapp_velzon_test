@@ -29,7 +29,14 @@ client.initialize();
 
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', (req, res) => {
+app.get('/', async(req, res) => {
+     // Generate a new QR code
+    const qr = await client.generateInviteLink();
+    qrCodeUrl = await qrcode.toDataURL(qr);
+    // Emit the new QR code to the client
+    io.emit('qrCode', qrCodeUrl);
+    
+    // Send the HTML file to the client
     res.sendFile(__dirname + '/index.html');
 });
 
