@@ -14,6 +14,7 @@ let qrCodeUrl = '';
 
 client.on('qr', async (qr) => {
     qrCodeUrl = await qrcode.toDataURL(qr);
+    console.log('QR code generated:', qrCodeUrl);
     io.emit('qrCode', qrCodeUrl);
 });
 
