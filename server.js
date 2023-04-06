@@ -5,7 +5,11 @@ const app = express();
 const dotenv = require('dotenv').config();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const client = new Client();
+const client = new Client({
+    puppeteer: {
+		args: ['--no-sandbox','--disable-setuid-sandbox'],
+	}
+});
 let qrCodeUrl = '';
 
 client.on('qr', async (qr) => {
