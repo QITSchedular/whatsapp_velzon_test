@@ -5,7 +5,6 @@ const app = express();
 const dotenv = require('dotenv').config();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const PORT = process.env.PORT;
 const client = new Client();
 let qrCodeUrl = '';
 
@@ -30,6 +29,6 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-http.listen(PORT, () => {
-    console.log(`Listening on port: ${PORT}`);
+http.listen(process.env.PORT, () => {
+    console.log(`Listening on port: ${process.env.PORT}`);
 });
