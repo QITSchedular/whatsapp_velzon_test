@@ -19,7 +19,7 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-    console.log('Message received:', msg.body);
+    console.log('Message is received:', msg.body);
 });
 
 client.initialize();
