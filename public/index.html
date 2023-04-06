@@ -14,6 +14,8 @@
         socket.on('qrCode', (qrCodeUrl) => {
             const qrCodeContainer = document.getElementById('qrCodeContainer');
             qrCodeContainer.innerHTML = `<img src="${qrCodeUrl}">`;
+            socket.off('qrCode');
+            console.log("socket is off");
         });
     </script>
 </body>
