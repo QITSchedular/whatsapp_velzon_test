@@ -2,9 +2,10 @@ const { Client } = require('whatsapp-web.js');
 const qrcode = require('qrcode');
 const express = require('express');
 const app = express();
+const dotenv = require('dotenv').config();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-
+const PORT = process.env.PORT;
 const client = new Client();
 let qrCodeUrl = '';
 
@@ -29,6 +30,6 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-http.listen(3000, () => {
-    console.log('Listening on port 3000');
+http.listen(PORT, () => {
+    console.log(`Listening on port: ${PORT}`);
 });
